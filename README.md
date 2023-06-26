@@ -35,15 +35,15 @@ You need to download the ImageNet pretrained transformer model : [ViT-Base](http
 
 We utilize 1 3090 GPU for training and it takes around 14GB GPU memory.
 
-You can train the DPM with:
+You can train the FODN with:
 
 ```bash
-python train.py --config_file configs/dpm.yml MODEL.DEVICE_ID "('your device id')"
+python train.py --config_file configs/fodn.yml MODEL.DEVICE_ID "('your device id')"
 ```
 **Some examples:**
 ```bash
 # Occluded_Duke
-python train.py --config_file configs/OCC_Duke/dpm.yml MODEL.DEVICE_ID "('0')"
+python train.py --config_file configs/OCC_Duke/fodn.yml MODEL.DEVICE_ID "('0')"
 ```
 
 We have set the validation set as Occluded REID when training on the Market-1501. Therefore, if you want to use the Market-1501, please modify it in the 'datasets/market1501.py'.
@@ -58,36 +58,6 @@ python test.py --config_file 'choose which config to test' MODEL.DEVICE_ID "('yo
 **Some examples:**
 ```bash
 # OCC_Duke
-python test.py --config_file configs/OCC_Duke/dpm.yml MODEL.DEVICE_ID "('0')" TEST.WEIGHT './logs/occ_duke_dpm/transformer_150.pth'
+python test.py --config_file configs/OCC_Duke/fodn.yml MODEL.DEVICE_ID "('0')" TEST.WEIGHT './logs/occ_duke_dpm/transformer_150.pth'
 ```
 
-#### Results
-| Dataset | Rank@1 | mAP | Model |
-| :------:  |:------: | :------: | :------: |
-|  Occluded-Duke      | 71.4 (72.0)   | 61.8 (61.9) | [model](https://drive.google.com/file/d/12rTyilUnwOy-lsaM65Y_ce_6AmOivgm1/view?usp=sharing) |
-|  Occluded-REID      | 85.5 (86.2)   | 79.7 (80.0) | [model](https://drive.google.com/file/d/1J86byKnQocDK9XZeQuMvg-qvS_gN_zAd/view?usp=sharing) |
-
-We reorganize code and the performances are slightly higher than the paper's.
-
-## Citation
-Please kindly cite this paper in your publications if it helps your research:
-```bash
-@inproceedings{tan2022dynamic,
-  title={Dynamic Prototype Mask for Occluded Person Re-Identification},
-  author={Tan, Lei and Dai, Pingyang and Ji, Rongrong and Wu, Yongjian},
-  booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
-  pages={531--540},
-  year={2022}
-}
-```
-
-## Acknowledgement
-Our code is based on [TransReID](https://github.com/damo-cv/TransReID)[1]
-
-## References
-[1]Shuting He, Hao Luo, Pichao Wang, Fan Wang, Hao Li, and Wei Jiang. 2021. Transreid: Transformer-based object re-identification. In Proceedings of the IEEE/CVF
-International Conference on Computer Vision. 15013–15022.
-
-## Contact
-
-If you have any question, please feel free to contact us. E-mail: [tanlei@stu.xmu.edu.cn](mailto:tanlei@stu.xmu.edu.cn)
