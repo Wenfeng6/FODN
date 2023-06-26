@@ -58,6 +58,6 @@ python test.py --config_file 'choose which config to test' MODEL.DEVICE_ID "('yo
 **Some examples:**
 ```bash
 # OCC_Duke
-python test.py --config_file configs/OCC_Duke/fodn.yml MODEL.DEVICE_ID "('0')" TEST.WEIGHT './logs/occ_duke_dpm/transformer_150.pth'
+python test.py --config_file configs/OCC_Duke/fodn.yml MODEL.DEVICE_ID "('0')" TEST.WEIGHT './logs/occ_duke_fodn/transformer_150.pth'
 ```
 
